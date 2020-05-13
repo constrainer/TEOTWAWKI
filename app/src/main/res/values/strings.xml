@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Buzzainer Food Saver</string>
+    <string name="buzzainersFoodSaver">Buzzainers Food Saver</string>
+    <string name="quantity">Quantity</string>
+    <string name="nameOfFood">Name of Food</string>
+    <string name="expirationDate">Expiration Date</string>
+    <string name="placeStored">Place Stored</string>
+    <string name="addToPantry">Add To Pantry</string>
+</resources>
