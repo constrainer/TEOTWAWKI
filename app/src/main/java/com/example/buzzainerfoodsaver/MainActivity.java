@@ -8,6 +8,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText expirationDateEditText;
     private EditText storageLocation;
     private Button addToPantry;
+    private Button pantryBtn;
 
     private String channelID = "458";
     private int notificationID = 584;
@@ -72,7 +74,13 @@ public class MainActivity extends AppCompatActivity {
         expirationDateEditText = findViewById(R.id.expirationDate);
         storageLocation = findViewById(R.id.storageLocation);
         addToPantry = findViewById(R.id.addToPantry);
-
+        pantryBtn = findViewById(R.id.pantry);
+        pantryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Pantry.class));
+            }
+        });
         MyEditTextDatePicker expirationDatePicker = new MyEditTextDatePicker(this, R.id.expirationDate);//constructing a date picker object inputing  our expirationDate variable
         addToPantry.setOnClickListener(new View.OnClickListener() {//setOnClickListener is a function of the Button class? hmmm why is setOnClickListener not start /w caps and OnClickListener does. Maybe OnClickListener is a function of the View class? While setOnClickListener is a constructor?
             @Override
@@ -137,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         return valid;
     }
     public void saveToPreferences(Food food){
-        SharedPreferences  mPrefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences  mPrefs = getSharedPreferences("myData",MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = mPrefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(food);
@@ -151,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
     public ArrayList<Food> retrieveFromPrefs(){
         ArrayList<Food> foodArray = new ArrayList<Food>();
-        SharedPreferences  mPrefs = getPreferences(MODE_PRIVATE);
+        SharedPreferences  mPrefs = getSharedPreferences("myData",MODE_PRIVATE);
         Map<String,?> keys = mPrefs.getAll();
         Gson gson = new Gson();
         for(Map.Entry<String,?> key : keys.entrySet()){

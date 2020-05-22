@@ -88,7 +88,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.733" />
+        app:layout_constraintTop_toBottomOf="@+id/storageLocation"
+        app:layout_constraintVertical_bias="0.229" />
+
+    <Button
+        android:id="@+id/pantry"
+        android:layout_width="109dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="100dp"
+        android:text="Pantry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addToPantry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
