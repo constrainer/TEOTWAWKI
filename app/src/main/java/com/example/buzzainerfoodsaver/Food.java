@@ -1,6 +1,11 @@
 package com.example.buzzainerfoodsaver;
 
-public class Food {
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Comparator;
+import java.util.Date;
+
+public class Food implements Comparable<Food> {
     private int quantity;
     private String foodName;
     private long expirationDate;
@@ -28,7 +33,7 @@ public class Food {
     }
 
     public String getFoodName() {
-        return foodName;
+        return this.foodName;
     }
 
     public void setFoodName(String foodName) {
@@ -49,6 +54,21 @@ public class Food {
 
     public void setStorageLocation(String storageLocation) {
         this.storageLocation = storageLocation;
+    }
+    @Override
+    public int compareTo(Food foodComp){
+        int food1 = Math.toIntExact(this.expirationDate/1000);
+        int food2 = Math.toIntExact(foodComp.getExpirationDate()/1000);
+        this.getExpirationDate();
+
+        return food1 - food2;
+
+    }
+    public String formatDate(){
+        Date newD = new Date(this.expirationDate);
+        DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        String strDate = dateFormat.format(newD);
+        return strDate;
     }
 }
 
